@@ -34,7 +34,10 @@
 		</history>
 	</header>
 	<action-group>
-		<open src="adm/style/acp_forums.php">
+		<copy>
+			<file from="root/*.*" to="*.*"/>
+		</copy>
+		<open src="adm/style/acp_forums.html">
 			<edit>
 				<find><![CDATA[<legend>{L_FORUM_RULES}</legend>]]></find>
 				<action type="replace-with"><![CDATA[<legend><!-- IF FORUM_RULES_TITLE_SHOW -->{U_FORUM_RULES_TITLE}<!-- ELSE -->{L_FORUM_RULES}<!-- ENDIF --></legend>
@@ -158,6 +161,8 @@
 			</edit>
 		</open>
 		<php-installer><![CDATA[install/index.php]]></php-installer>
-		<diy-instructions lang="en"><![CDATA[Once you run the install file you can then set the Rules title to anything you would like.]]></diy-instructions>
+		<diy-instructions lang="en"><![CDATA[Once you run the install file you can then set the Rules title to anything you would like. 
+
+Make sure to delete the install/index.php dir/file]]></diy-instructions>
 	</action-group>
 </mod>
