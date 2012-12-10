@@ -17,7 +17,7 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>0.0.1</mod-version>
+		<mod-version>0.0.2</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
@@ -29,6 +29,13 @@
 				<rev-version>0.0.1</rev-version>
 				<changelog lang="en">
 					<change><![CDATA[First version of this mod]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2012-12-10</date>
+				<rev-version>0.0.2</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Adding change to posting_layout.php]]></change>
 				</changelog>
 			</entry>
 		</history>
@@ -76,6 +83,47 @@
 				<find><![CDATA['FORUM_RULES_PREVIEW'				=> 'Forum rules preview',]]></find>
 				<action type="before-add"><![CDATA[	'FORUM_RULES_TITLE'					=> 'Rules Title',
 	'FORUM_RULES_TITLE_EXPLAIN'			=> 'Change "Forum Rules" to text of your choice',]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/posting_layout.html">
+			<edit>
+				<find><![CDATA[<!-- IF S_FORUM_RULES -->
+	<div class="rules">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		
+		<!-- IF U_FORUM_RULES -->
+			<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
+		<!-- ELSE -->
+			<strong>{L_FORUM_RULES}</strong><br />
+			{FORUM_RULES}
+		<!-- ENDIF -->
+		
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+<!-- ENDIF -->]]></find>
+				<action type="replace-with"><![CDATA[<!-- IF S_FORUM_RULES -->
+	<div class="rules">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+		<!-- IF S_FORUM_RULES_TITLE -->
+			<!-- IF U_FORUM_RULES -->
+				<a href="{U_FORUM_RULES}">{U_FORUM_RULES_TITLE}</a>
+			<!-- ELSE -->
+				<strong>{U_FORUM_RULES_TITLE}</strong><br />
+				{FORUM_RULES}
+			<!-- ENDIF -->
+		<!-- ELSE -->
+			<!-- IF U_FORUM_RULES -->
+				<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
+			<!-- ELSE -->
+				<strong>{L_FORUM_RULES}</strong><br />
+				{FORUM_RULES}
+			<!-- ENDIF -->
+		<!-- ENDIF -->
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+<!-- ENDIF -->]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/viewforum_body.html">

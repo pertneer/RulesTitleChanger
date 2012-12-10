@@ -74,19 +74,23 @@ $version_config_name = 'rtc_version';
 */
 $mod = array(
 	'name'		=> 'Rules Title Changer',
-	'version'	=> '0.0.1',
+	'version'	=> '0.0.2',
 	'config'	=> 'rules_title_changer_version',
 	'enable'	=> 'rules_title_changer_enable',
 );
 
 
 $versions = array(
+	'0.0.2'	=> array(
+		//no database changes
+	),
+
 	'0.0.1'	=> array(
 		'table_column_add' => array(
 				array('phpbb_forums', 'forum_rules_title', array('VCHAR', '')),
 			),
 		),
-	
+
 		'cache_purge' => array(
 			'template',
 		),
