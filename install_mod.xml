@@ -73,11 +73,11 @@
 		<open src="includes/acp/acp_forums.php">
 			<edit>
 				<find><![CDATA['forum_password_unset'	=> request_var('forum_password_unset', false),]]></find>
-				<action type="after-add"><![CDATA[						'forum_rules_title'		=> utf8_normalize_nfc(request_var('forum_rules_title', '')),]]></action>
+				<action type="after-add"><![CDATA[						'forum_rules_title'		=> utf8_normalize_nfc(request_var('forum_rules_title', '', true)),]]></action>
 			</edit>
 			<edit>
 				<find><![CDATA['forum_password_confirm'=> '',]]></find>
-				<action type="after-add"><![CDATA[							'forum_rules_title'		=> utf8_normalize_nfc(request_var('forum_rules_title', '')),]]></action>
+				<action type="after-add"><![CDATA[							'forum_rules_title'		=> utf8_normalize_nfc(request_var('forum_rules_title', '', true)),]]></action>
 			</edit>
 			<edit>
 				<find><![CDATA['FORUM_RULES'				=> $forum_data['forum_rules'],]]></find>
