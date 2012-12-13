@@ -7,7 +7,7 @@
 		<meta name="generator" content="MODX file generated with PP MODX Creator 1.0.1 by tumba25 (offline version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
 		<title lang="en"><![CDATA[Forum Rules Title Changer]]></title>
-		<description lang="en"><![CDATA[This will let you set the title of the rules on a per forum basis via ACP]]></description>
+		<description lang="en"><![CDATA[This allows you to set the title of the rules on a per forum basis via ACP]]></description>
 		<author-notes lang="en"><![CDATA[This is just a first draft and may not function as expected, do not use on a live forum.]]></author-notes>
 		<author-group>
 			<author>
@@ -17,7 +17,7 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>0.0.3</mod-version>
+		<mod-version>0.0.2</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
@@ -36,13 +36,6 @@
 				<rev-version>0.0.2</rev-version>
 				<changelog lang="en">
 					<change><![CDATA[Adding change to posting_layout.php]]></change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2012-12-13</date>
-				<rev-version>0.0.3</rev-version>
-				<changelog lang="en">
-					<change><![CDATA[added utf8_normalize_nfc]]></change>
 				</changelog>
 			</entry>
 		</history>
@@ -85,11 +78,11 @@
 					'FORUM_RULES_TITLE_SHOW'	=> ($forum_data['forum_rules_title'] != '') ? true : false,]]></action>
 			</edit>
 		</open>
-		<open src="language/en/acp/forums.php">
+		<open src="language/de/acp/forums.php">
 			<edit>
-				<find><![CDATA['FORUM_RULES_PREVIEW'				=> 'Forum rules preview',]]></find>
-				<action type="before-add"><![CDATA[	'FORUM_RULES_TITLE'					=> 'Rules Title',
-	'FORUM_RULES_TITLE_EXPLAIN'			=> 'Change "Forum Rules" to text of your choice',]]></action>
+				<find><![CDATA[	'FORUM_RULES_PREVIEW'				=> 'Vorschau der Forumsregeln',]]></find>
+				<action type="before-add"><![CDATA[	'FORUM_RULES_TITLE'					=> 'Titel der Regel',
+	'FORUM_RULES_TITLE_EXPLAIN'			=> 'Änderne "Forumsregeln" zum Text Deiner Wahl',]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/posting_layout.html">
