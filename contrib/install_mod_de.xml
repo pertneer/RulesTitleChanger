@@ -4,80 +4,28 @@
 <!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
 	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<meta name="generator" content="MODX file generated with PP MODX Creator 1.0.1 by tumba25 (offline version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Forum Rules Title Changer]]></title>
-		<description lang="en"><![CDATA[This allows you to set the title of the rules on a per forum basis via ACP]]></description>
-		<author-notes lang="en"><![CDATA[This is just a first draft and may not function as expected, do not use on a live forum.]]></author-notes>
+		<title lang="en"><![CDATA[(de_DU) Forum Rules Title Changer]]></title>
+		<description lang="de"><![CDATA[Deutsche Sprachdateien für phpBB Mod "Forum Rules Title Changer"]]></description>
+		<author-notes lang="de"><![CDATA[Dies ist nur ein erster Entwurf und kann nicht wie erwartet funktionieren, bitte nicht auf einem Live-Forum benutzen.]]></author-notes>
 		<author-group>
 			<author>
-				<username><![CDATA[Pertneer]]></username>
+				<username><![CDATA[wintstar]]></username>
 				<contributions-group>
-					<contributions status="current" position="Developer"/>
+					<contributions status="current" position="Translator"/>
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>0.0.2</mod-version>
+		<mod-version>0.0.3</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
 			<target-version>3.0.11</target-version>
 		</installation>
-		<history>
-			<entry>
-				<date>2012-12-05</date>
-				<rev-version>0.0.1</rev-version>
-				<changelog lang="en">
-					<change><![CDATA[First version of this mod]]></change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2012-12-10</date>
-				<rev-version>0.0.2</rev-version>
-				<changelog lang="en">
-					<change><![CDATA[Adding change to posting_layout.php]]></change>
-				</changelog>
-			</entry>
-		</history>
 	</header>
 	<action-group>
-		<copy>
-			<file from="root/*.*" to="*.*"/>
-		</copy>
-		<open src="adm/style/acp_forums.html">
-			<edit>
-				<find><![CDATA[<legend>{L_FORUM_RULES}</legend>]]></find>
-				<action type="replace-with"><![CDATA[<legend><!-- IF FORUM_RULES_TITLE_SHOW -->{U_FORUM_RULES_TITLE}<!-- ELSE -->{L_FORUM_RULES}<!-- ENDIF --></legend>
-		<dl>
-			<dt><label for="forum_rules_title">{L_FORUM_RULES_TITLE}:</label><br /><span>{L_FORUM_RULES_TITLE_EXPLAIN}</span></dt>
-			<dd><input class="text medium" type="text" id="forum_rules_title" name="forum_rules_title" value="{U_FORUM_RULES_TITLE}" maxlength="255" /></dd>
-		</dl>]]></action>
-			</edit>
-		</open>
-		<open src="includes/functions_display.php">
-			<edit>
-				<find><![CDATA[$template->assign_vars(array(
-		'S_FORUM_RULES'	=> true,
-		'U_FORUM_RULES'	=> $forum_data['forum_rules_link'],]]></find>
-				<action type="after-add"><![CDATA[		'S_FORUM_RULES_TITLE'	=> ($forum_data['forum_rules_title'] != '') ? true : false,
-		'U_FORUM_RULES_TITLE'	=> $forum_data['forum_rules_title'],]]></action>
-			</edit>
-		</open>
-		<open src="includes/acp/acp_forums.php">
-			<edit>
-				<find><![CDATA['forum_password_unset'	=> request_var('forum_password_unset', false),]]></find>
-				<action type="after-add"><![CDATA[						'forum_rules_title'		=> utf8_normalize_nfc(request_var('forum_rules_title', '')),]]></action>
-			</edit>
-			<edit>
-				<find><![CDATA['forum_password_confirm'=> '',]]></find>
-				<action type="after-add"><![CDATA[							'forum_rules_title'		=> utf8_normalize_nfc(request_var('forum_rules_title', '')),]]></action>
-			</edit>
-			<edit>
-				<find><![CDATA['FORUM_RULES'				=> $forum_data['forum_rules'],]]></find>
-				<action type="after-add"><![CDATA[					'U_FORUM_RULES_TITLE'		=> $forum_data['forum_rules_title'],
-					'FORUM_RULES_TITLE_SHOW'	=> ($forum_data['forum_rules_title'] != '') ? true : false,]]></action>
-			</edit>
-		</open>
 		<open src="language/de/acp/forums.php">
 			<edit>
 				<find><![CDATA[	'FORUM_RULES_PREVIEW'				=> 'Vorschau der Forumsregeln',]]></find>
@@ -85,132 +33,9 @@
 	'FORUM_RULES_TITLE_EXPLAIN'			=> 'Änderne "Forumsregeln" zum Text Deiner Wahl',]]></action>
 			</edit>
 		</open>
-		<open src="styles/prosilver/template/posting_layout.html">
-			<edit>
-				<find><![CDATA[<!-- IF S_FORUM_RULES -->
-	<div class="rules">
-		<div class="inner"><span class="corners-top"><span></span></span>
-		
-		<!-- IF U_FORUM_RULES -->
-			<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
-		<!-- ELSE -->
-			<strong>{L_FORUM_RULES}</strong><br />
-			{FORUM_RULES}
-		<!-- ENDIF -->
-		
-		<span class="corners-bottom"><span></span></span></div>
-	</div>
-<!-- ENDIF -->]]></find>
-				<action type="replace-with"><![CDATA[<!-- IF S_FORUM_RULES -->
-	<div class="rules">
-		<div class="inner"><span class="corners-top"><span></span></span>
-
-		<!-- IF S_FORUM_RULES_TITLE -->
-			<!-- IF U_FORUM_RULES -->
-				<a href="{U_FORUM_RULES}">{U_FORUM_RULES_TITLE}</a>
-			<!-- ELSE -->
-				<strong>{U_FORUM_RULES_TITLE}</strong><br />
-				{FORUM_RULES}
-			<!-- ENDIF -->
-		<!-- ELSE -->
-			<!-- IF U_FORUM_RULES -->
-				<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
-			<!-- ELSE -->
-				<strong>{L_FORUM_RULES}</strong><br />
-				{FORUM_RULES}
-			<!-- ENDIF -->
-		<!-- ENDIF -->
-
-		<span class="corners-bottom"><span></span></span></div>
-	</div>
-<!-- ENDIF -->]]></action>
-			</edit>
-		</open>
-		<open src="styles/prosilver/template/viewforum_body.html">
-			<edit>
-				<find><![CDATA[<!-- IF S_FORUM_RULES -->
-	<div class="rules">
-		<div class="inner"><span class="corners-top"><span></span></span>
-
-		<!-- IF U_FORUM_RULES -->
-			<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
-		<!-- ELSE -->
-			<strong>{L_FORUM_RULES}</strong><br />
-			{FORUM_RULES}
-		<!-- ENDIF -->
-
-		<span class="corners-bottom"><span></span></span></div>
-	</div>
-<!-- ENDIF -->]]></find>
-				<action type="replace-with"><![CDATA[<!-- IF S_FORUM_RULES -->
-	<div class="rules">
-		<div class="inner"><span class="corners-top"><span></span></span>
-
-		<!-- IF S_FORUM_RULES_TITLE -->
-			<!-- IF U_FORUM_RULES -->
-				<a href="{U_FORUM_RULES}">{U_FORUM_RULES_TITLE}</a>
-			<!-- ELSE -->
-				<strong>{U_FORUM_RULES_TITLE}</strong><br />
-				{FORUM_RULES}
-			<!-- ENDIF -->
-		<!-- ELSE -->
-			<!-- IF U_FORUM_RULES -->
-				<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
-			<!-- ELSE -->
-				<strong>{L_FORUM_RULES}</strong><br />
-				{FORUM_RULES}
-			<!-- ENDIF -->
-		<!-- ENDIF -->
-
-		<span class="corners-bottom"><span></span></span></div>
-	</div>
-<!-- ENDIF -->]]></action>
-			</edit>
-		</open>
-		<open src="styles/prosilver/template/viewtopic_body.html">
-			<edit>
-				<find><![CDATA[<!-- IF S_FORUM_RULES -->
-	<div class="rules">
-		<div class="inner"><span class="corners-top"><span></span></span>
-
-		<!-- IF U_FORUM_RULES -->
-			<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
-		<!-- ELSE -->
-			<strong>{L_FORUM_RULES}</strong><br />
-			{FORUM_RULES}
-		<!-- ENDIF -->
-
-		<span class="corners-bottom"><span></span></span></div>
-	</div>
-<!-- ENDIF -->]]></find>
-				<action type="replace-with"><![CDATA[<!-- IF S_FORUM_RULES -->
-	<div class="rules">
-		<div class="inner"><span class="corners-top"><span></span></span>
-
-		<!-- IF S_FORUM_RULES_TITLE -->
-			<!-- IF U_FORUM_RULES -->
-				<a href="{U_FORUM_RULES}">{U_FORUM_RULES_TITLE}</a>
-			<!-- ELSE -->
-				<strong>{U_FORUM_RULES_TITLE}</strong><br />
-				{FORUM_RULES}
-			<!-- ENDIF -->
-		<!-- ELSE -->
-			<!-- IF U_FORUM_RULES -->
-				<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
-			<!-- ELSE -->
-				<strong>{L_FORUM_RULES}</strong><br />
-				{FORUM_RULES}
-			<!-- ENDIF -->
-		<!-- ENDIF -->
-
-		<span class="corners-bottom"><span></span></span></div>
-	</div>
-<!-- ENDIF -->]]></action>
-			</edit>
-		</open>
 		<php-installer><![CDATA[install/index.php]]></php-installer>
-		<diy-instructions lang="en"><![CDATA[Once you run the install file you can then set the Rules title to anything you would like. 
+		<diy-instructions lang="de"><![CDATA[Sobald Du die Installationsdatei ausgeführt hast, kannst Du dann die Forumsregeln zu dem festlegen was Du möchtest. 
 
-Make sure to delete the install/index.php dir/file]]></diy-instructions>
+Achte darauf, lösche Verzeichnis/Datei install/index.php]]></diy-instructions>
 	</action-group>
 </mod>

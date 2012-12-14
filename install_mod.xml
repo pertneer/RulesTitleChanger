@@ -16,6 +16,12 @@
 					<contributions status="current" position="Developer"/>
 				</contributions-group>
 			</author>
+			<author>
+				<username><![CDATA[Wintstar]]></username>
+				<contributions-group>
+					<contributions status="current" position="Translator"/>
+				</contributions-group>
+			</author>
 		</author-group>
 		<mod-version>0.0.3</mod-version>
 		<installation>
@@ -46,6 +52,9 @@
 				</changelog>
 			</entry>
 		</history>
+		<link-group>
+			<link type="language" href="contrib/install_mod_de.xml" lang="en">German (Casual Honorifics) Deutsch (Du) translation</link>
+		</link-group>
 	</header>
 	<action-group>
 		<copy>
