@@ -5,7 +5,6 @@
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator 1.2.6 by tumba25 (offline version)"/>
-		<meta name="generator" content="MODX file generated with PP MODX Creator 1.0.1 by tumba25 (offline version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
 		<title lang="en"><![CDATA[Forum Rules Title Changer]]></title>
 		<description lang="en"><![CDATA[This will let you set the title of the rules on a per forum basis via ACP]]></description>
@@ -25,11 +24,11 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>0.0.4</mod-version>
+		<mod-version>0.0.5</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
-			<target-version>3.0.11</target-version>
+			<target-version>3.0.12</target-version>
 		</installation>
 		<history>
 			<entry>
@@ -58,6 +57,13 @@
 				<rev-version>0.0.4</rev-version>
 				<changelog lang="en">
 					<change><![CDATA[Added German (Casual Honorifics) Deutsch (Du) translation]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2014-06-24</date>
+				<rev-version>0.0.5</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Added subsilver2 changes thanks to mh5bl]]></change>
 				</changelog>
 			</entry>
 		</history>
@@ -231,6 +237,88 @@
 		<span class="corners-bottom"><span></span></span></div>
 	</div>
 <!-- ENDIF -->]]></action>
+			</edit>
+		</open>
+		<open src="styles/subsilver2/template/viewforum_body.html">
+			<edit>
+				<find><![CDATA[<!-- IF S_FORUM_RULES -->
+	<div class="forumrules">
+		<!-- IF U_FORUM_RULES -->
+			<h3>{L_FORUM_RULES}</h3><br />
+			<a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a>
+		<!-- ELSE -->
+			<h3>{L_FORUM_RULES}</h3><br />
+			{FORUM_RULES}
+		<!-- ENDIF -->
+	</div>
+
+	<br clear="all" />
+<!-- ENDIF -->]]></find>
+				<action type="replace-with"><![CDATA[<!-- IF S_FORUM_RULES -->
+   <div class="forumrules">
+	  <!-- IF S_FORUM_RULES_TITLE -->
+		 <!-- IF U_FORUM_RULES -->
+			<h3>{U_FORUM_RULES_TITLE}</h3>
+			<a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a>
+		 <!-- ELSE -->
+			<h3>{U_FORUM_RULES_TITLE}</h3><br />
+			{FORUM_RULES}
+		 <!-- ENDIF -->
+	  <!-- ELSE -->
+	  <!-- IF U_FORUM_RULES -->
+		 <h3>{L_FORUM_RULES}</h3><br />
+		 <a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a>
+	  <!-- ELSE -->
+		 <h3>{L_FORUM_RULES}</h3><br />
+		 {FORUM_RULES}
+	  <!-- ENDIF -->
+   <!-- ENDIF -->
+   </div>
+
+   <br clear="all" />
+<!-- ENDIF -->
+]]></action>
+			</edit>
+		</open>
+		<open src="styles/subsilver2/template/viewtopic_body.html">
+			<edit>
+				<find><![CDATA[<!-- IF S_FORUM_RULES -->
+	<div class="forumrules">
+		<!-- IF U_FORUM_RULES -->
+			<h3>{L_FORUM_RULES}</h3><br />
+			<a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a>
+		<!-- ELSE -->
+			<h3>{L_FORUM_RULES}</h3><br />
+			{FORUM_RULES}
+		<!-- ENDIF -->
+	</div>
+
+	<br clear="all" />
+<!-- ENDIF -->]]></find>
+				<action type="replace-with"><![CDATA[<!-- IF S_FORUM_RULES -->
+   <div class="forumrules">
+	  <!-- IF S_FORUM_RULES_TITLE -->
+		 <!-- IF U_FORUM_RULES -->
+			<h3>{U_FORUM_RULES_TITLE}</h3>
+			<a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a>
+		 <!-- ELSE -->
+			<h3>{U_FORUM_RULES_TITLE}</h3><br />
+			{FORUM_RULES}
+		 <!-- ENDIF -->
+	  <!-- ELSE -->
+	  <!-- IF U_FORUM_RULES -->
+		 <h3>{L_FORUM_RULES}</h3><br />
+		 <a href="{U_FORUM_RULES}"><b>{L_FORUM_RULES_LINK}</b></a>
+	  <!-- ELSE -->
+		 <h3>{L_FORUM_RULES}</h3><br />
+		 {FORUM_RULES}
+	  <!-- ENDIF -->
+   <!-- ENDIF -->
+   </div>
+
+   <br clear="all" />
+<!-- ENDIF -->
+]]></action>
 			</edit>
 		</open>
 		<php-installer><![CDATA[install/index.php]]></php-installer>
